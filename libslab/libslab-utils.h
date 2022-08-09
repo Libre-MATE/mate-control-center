@@ -7,7 +7,7 @@
 
 G_BEGIN_DECLS
 
-MateDesktopItem *libslab_mate_desktop_item_new_from_unknown_id (const gchar *id);
+MateDesktopItem *libslab_mate_desktop_item_new_from_unknown_id(const gchar *id);
 
 G_END_DECLS
 

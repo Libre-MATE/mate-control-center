@@ -21,26 +21,25 @@
 #ifndef __THEME_UTIL_H__
 #define __THEME_UTIL_H__
 
-enum {
-	COL_THUMBNAIL,
-	COL_LABEL,
-	COL_NAME,
-	NUM_COLS
-};
+#include <glib.h>
+#include <gtk/gtk.h>
+
+enum { COL_THUMBNAIL, COL_LABEL, COL_NAME, NUM_COLS };
 
 typedef enum {
-	THEME_TYPE_GTK,
-	THEME_TYPE_WINDOW,
-	THEME_TYPE_ICON,
-	THEME_TYPE_META,
-	THEME_TYPE_CURSOR
+  THEME_TYPE_GTK,
+  THEME_TYPE_WINDOW,
+  THEME_TYPE_ICON,
+  THEME_TYPE_META,
+  THEME_TYPE_CURSOR
 } ThemeType;
 
 gboolean theme_is_writable(const gpointer theme);
 gboolean theme_delete(const gchar* name, ThemeType type);
 
 gboolean theme_model_iter_last(GtkTreeModel* model, GtkTreeIter* iter);
-gboolean theme_find_in_model(GtkTreeModel* model, const gchar* name, GtkTreeIter* iter);
+gboolean theme_find_in_model(GtkTreeModel* model, const gchar* name,
+                             GtkTreeIter* iter);
 
 void theme_install_file(GtkWindow* parent, const gchar* path);
 gboolean packagekit_available(void);

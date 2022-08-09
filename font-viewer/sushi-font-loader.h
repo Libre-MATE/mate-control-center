@@ -32,21 +32,16 @@
 #include FT_FREETYPE_H
 #include <gio/gio.h>
 
-FT_Face sushi_new_ft_face_from_uri (FT_Library library,
-                                    const gchar *uri,
-                                    gint face_index,
-                                    gchar **contents,
-                                    GError **error);
+FT_Face sushi_new_ft_face_from_uri(FT_Library library, const gchar *uri,
+                                   gint face_index, gchar **contents,
+                                   GError **error);
 
-void sushi_new_ft_face_from_uri_async (FT_Library library,
-                                       const gchar *uri,
-                                       gint face_index,
-                                       GAsyncReadyCallback callback,
-                                       gpointer user_data);
+void sushi_new_ft_face_from_uri_async(FT_Library library, const gchar *uri,
+                                      gint face_index,
+                                      GAsyncReadyCallback callback,
+                                      gpointer user_data);
 
-FT_Face sushi_new_ft_face_from_uri_finish (GAsyncResult *result,
-                                           gchar **contents,
-                                           GError **error);
+FT_Face sushi_new_ft_face_from_uri_finish(GAsyncResult *result,
+                                          gchar **contents, GError **error);
 
 #endif /* __SUSHI_FONT_LOADER_H__ */
-

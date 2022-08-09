@@ -21,46 +21,50 @@
 #ifndef __APPLICATION_TILE_H__
 #define __APPLICATION_TILE_H__
 
-#include "nameplate-tile.h"
-
 #include <glib.h>
 #include <libmate-desktop/mate-desktop-item.h>
 
+#include "nameplate-tile.h"
+
 G_BEGIN_DECLS
 
-#define APPLICATION_TILE_TYPE         (application_tile_get_type ())
-#define APPLICATION_TILE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), APPLICATION_TILE_TYPE, ApplicationTile))
-#define APPLICATION_TILE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), APPLICATION_TILE_TYPE, ApplicationTileClass))
-#define IS_APPLICATION_TILE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), APPLICATION_TILE_TYPE))
-#define IS_APPLICATION_TILE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), APPLICATION_TILE_TYPE))
-#define APPLICATION_TILE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), APPLICATION_TILE_TYPE, ApplicationTileClass))
-#define APPLICATION_TILE_ACTION_START             0
-#define APPLICATION_TILE_ACTION_HELP              1
-#define APPLICATION_TILE_ACTION_UPDATE_MAIN_MENU  2
-#define APPLICATION_TILE_ACTION_UPDATE_STARTUP    3
-#define APPLICATION_TILE_ACTION_UPGRADE_PACKAGE   4
+#define APPLICATION_TILE_TYPE (application_tile_get_type())
+#define APPLICATION_TILE(o) \
+  (G_TYPE_CHECK_INSTANCE_CAST((o), APPLICATION_TILE_TYPE, ApplicationTile))
+#define APPLICATION_TILE_CLASS(c) \
+  (G_TYPE_CHECK_CLASS_CAST((c), APPLICATION_TILE_TYPE, ApplicationTileClass))
+#define IS_APPLICATION_TILE(o) \
+  (G_TYPE_CHECK_INSTANCE_TYPE((o), APPLICATION_TILE_TYPE))
+#define IS_APPLICATION_TILE_CLASS(c) \
+  (G_TYPE_CHECK_CLASS_TYPE((c), APPLICATION_TILE_TYPE))
+#define APPLICATION_TILE_GET_CLASS(o) \
+  (G_TYPE_INSTANCE_GET_CLASS((o), APPLICATION_TILE_TYPE, ApplicationTileClass))
+#define APPLICATION_TILE_ACTION_START 0
+#define APPLICATION_TILE_ACTION_HELP 1
+#define APPLICATION_TILE_ACTION_UPDATE_MAIN_MENU 2
+#define APPLICATION_TILE_ACTION_UPDATE_STARTUP 3
+#define APPLICATION_TILE_ACTION_UPGRADE_PACKAGE 4
 #define APPLICATION_TILE_ACTION_UNINSTALL_PACKAGE 5
 
-typedef struct
-{
-	NameplateTile nameplate_tile;
+typedef struct {
+  NameplateTile nameplate_tile;
 
-	gchar *name;
-	gchar *description;
+  gchar *name;
+  gchar *description;
 } ApplicationTile;
 
-typedef struct
-{
-	NameplateTileClass nameplate_tile_class;
+typedef struct {
+  NameplateTileClass nameplate_tile_class;
 } ApplicationTileClass;
 
-GType application_tile_get_type (void);
+GType application_tile_get_type(void);
 
-GtkWidget *application_tile_new (const gchar * desktop_item_id);
-GtkWidget *application_tile_new_full (const gchar * desktop_item_id,
-	GtkIconSize icon_size, gboolean show_generic_name);
+GtkWidget *application_tile_new(const gchar *desktop_item_id);
+GtkWidget *application_tile_new_full(const gchar *desktop_item_id,
+                                     GtkIconSize icon_size,
+                                     gboolean show_generic_name);
 
-MateDesktopItem *application_tile_get_desktop_item (ApplicationTile * tile);
+MateDesktopItem *application_tile_get_desktop_item(ApplicationTile *tile);
 
 G_END_DECLS
 

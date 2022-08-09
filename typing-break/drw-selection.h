@@ -24,10 +24,12 @@
 #ifndef __DRW_SELECTION_H__
 #define __DRW_SELECTION_H__
 
-typedef struct _DrwSelection  DrwSelection;
+#include <glib.h>
 
-DrwSelection * drw_selection_start     (void);
-void           drw_selection_stop      (DrwSelection *drw_selection);
-gboolean       drw_selection_is_master (DrwSelection *drw_selection);
+typedef struct _DrwSelection DrwSelection;
+
+DrwSelection *drw_selection_start(void);
+void drw_selection_stop(DrwSelection *drw_selection);
+gboolean drw_selection_is_master(DrwSelection *drw_selection);
 
 #endif /* __DRW_SELECTION_H__ */

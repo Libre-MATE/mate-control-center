@@ -21,36 +21,41 @@
 #ifndef __NAMEPLATE_TILE_H__
 #define __NAMEPLATE_TILE_H__
 
-#include "tile.h"
-
 #include <glib.h>
 #include <gtk/gtk.h>
 
+#include "tile.h"
+
 G_BEGIN_DECLS
 
-#define NAMEPLATE_TILE_TYPE         (nameplate_tile_get_type ())
-#define NAMEPLATE_TILE(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), NAMEPLATE_TILE_TYPE, NameplateTile))
-#define NAMEPLATE_TILE_CLASS(c)     (G_TYPE_CHECK_CLASS_CAST ((c), NAMEPLATE_TILE_TYPE, NameplateTileClass))
-#define IS_NAMEPLATE_TILE(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), NAMEPLATE_TILE_TYPE))
-#define IS_NAMEPLATE_TILE_CLASS(c)  (G_TYPE_CHECK_CLASS_TYPE ((c), NAMEPLATE_TILE_TYPE))
-#define NAMEPLATE_TILE_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), NAMEPLATE_TILE_TYPE, NameplateTileClass))
+#define NAMEPLATE_TILE_TYPE (nameplate_tile_get_type())
+#define NAMEPLATE_TILE(o) \
+  (G_TYPE_CHECK_INSTANCE_CAST((o), NAMEPLATE_TILE_TYPE, NameplateTile))
+#define NAMEPLATE_TILE_CLASS(c) \
+  (G_TYPE_CHECK_CLASS_CAST((c), NAMEPLATE_TILE_TYPE, NameplateTileClass))
+#define IS_NAMEPLATE_TILE(o) \
+  (G_TYPE_CHECK_INSTANCE_TYPE((o), NAMEPLATE_TILE_TYPE))
+#define IS_NAMEPLATE_TILE_CLASS(c) \
+  (G_TYPE_CHECK_CLASS_TYPE((c), NAMEPLATE_TILE_TYPE))
+#define NAMEPLATE_TILE_GET_CLASS(o) \
+  (G_TYPE_INSTANCE_GET_CLASS((o), NAMEPLATE_TILE_TYPE, NameplateTileClass))
 
 typedef struct {
-	Tile tile;
+  Tile tile;
 
-	GtkWidget *image;
-	GtkWidget *header;
-	GtkWidget *subheader;
+  GtkWidget *image;
+  GtkWidget *header;
+  GtkWidget *subheader;
 } NameplateTile;
 
 typedef struct {
-	TileClass tile_class;
+  TileClass tile_class;
 } NameplateTileClass;
 
-GType nameplate_tile_get_type (void);
+GType nameplate_tile_get_type(void);
 
-GtkWidget *nameplate_tile_new (const gchar * uri, GtkWidget * image, GtkWidget * header,
-	GtkWidget * subheader);
+GtkWidget *nameplate_tile_new(const gchar *uri, GtkWidget *image,
+                              GtkWidget *header, GtkWidget *subheader);
 
 G_END_DECLS
 

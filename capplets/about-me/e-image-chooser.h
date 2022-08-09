@@ -25,40 +25,43 @@
 
 G_BEGIN_DECLS
 
-#define E_TYPE_IMAGE_CHOOSER	        (e_image_chooser_get_type ())
-#define E_IMAGE_CHOOSER(obj)	        (G_TYPE_CHECK_INSTANCE_CAST ((obj), E_TYPE_IMAGE_CHOOSER, EImageChooser))
-#define E_IMAGE_CHOOSER_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), E_TYPE_IMAGE_CHOOSER, EImageChooserClass))
-#define E_IS_IMAGE_CHOOSER(obj)	        (G_TYPE_CHECK_INSTANCE_TYPE ((obj), E_TYPE_IMAGE_CHOOSER))
-#define E_IS_IMAGE_CHOOSER_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((obj), E_TYPE_IMAGE_CHOOSER))
+#define E_TYPE_IMAGE_CHOOSER (e_image_chooser_get_type())
+#define E_IMAGE_CHOOSER(obj) \
+  (G_TYPE_CHECK_INSTANCE_CAST((obj), E_TYPE_IMAGE_CHOOSER, EImageChooser))
+#define E_IMAGE_CHOOSER_CLASS(klass) \
+  (G_TYPE_CHECK_CLASS_CAST((klass), E_TYPE_IMAGE_CHOOSER, EImageChooserClass))
+#define E_IS_IMAGE_CHOOSER(obj) \
+  (G_TYPE_CHECK_INSTANCE_TYPE((obj), E_TYPE_IMAGE_CHOOSER))
+#define E_IS_IMAGE_CHOOSER_CLASS(klass) \
+  (G_TYPE_CHECK_CLASS_TYPE((obj), E_TYPE_IMAGE_CHOOSER))
 
-typedef struct _EImageChooser        EImageChooser;
-typedef struct _EImageChooserClass   EImageChooserClass;
+typedef struct _EImageChooser EImageChooser;
+typedef struct _EImageChooserClass EImageChooserClass;
 
-struct _EImageChooser
-{
-	GtkBox parent;
+struct _EImageChooser {
+  GtkBox parent;
 };
 
-struct _EImageChooserClass
-{
-	GtkBoxClass parent_class;
+struct _EImageChooserClass {
+  GtkBoxClass parent_class;
 
-	/* signals */
-	void (*changed) (EImageChooser *chooser);
-
-
+  /* signals */
+  void (*changed)(EImageChooser *chooser);
 };
 
-GtkWidget *e_image_chooser_new            (void);
-GtkWidget *e_image_chooser_new_with_size  (int width, int height);
-GType      e_image_chooser_get_type       (void);
+GtkWidget *e_image_chooser_new(void);
+GtkWidget *e_image_chooser_new_with_size(int width, int height);
+GType e_image_chooser_get_type(void);
 
-gboolean   e_image_chooser_set_from_file  (EImageChooser *chooser, const char *filename);
-gboolean   e_image_chooser_set_image_data (EImageChooser *chooser, char *data, gsize data_length);
-void       e_image_chooser_set_editable   (EImageChooser *chooser, gboolean editable);
-void       e_image_chooser_set_scaleable  (EImageChooser *chooser, gboolean scaleable);
+gboolean e_image_chooser_set_from_file(EImageChooser *chooser,
+                                       const char *filename);
+gboolean e_image_chooser_set_image_data(EImageChooser *chooser, char *data,
+                                        gsize data_length);
+void e_image_chooser_set_editable(EImageChooser *chooser, gboolean editable);
+void e_image_chooser_set_scaleable(EImageChooser *chooser, gboolean scaleable);
 
-gboolean   e_image_chooser_get_image_data (EImageChooser *chooser, char **data, gsize *data_length);
+gboolean e_image_chooser_get_image_data(EImageChooser *chooser, char **data,
+                                        gsize *data_length);
 
 G_END_DECLS
 

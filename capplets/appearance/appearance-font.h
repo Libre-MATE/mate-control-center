@@ -21,6 +21,8 @@
 #ifndef __APPEARANCE_FONT_H__
 #define __APPEARANCE_FONT_H__
 
+#include "appearance.h"
+
 void font_init(AppearanceData* data);
 void font_shutdown(AppearanceData* data);
 

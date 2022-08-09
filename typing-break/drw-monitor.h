@@ -24,28 +24,31 @@
 
 #include <glib-object.h>
 
-#define DRW_TYPE_MONITOR         (drw_monitor_get_type ())
-#define DRW_MONITOR(o)           (G_TYPE_CHECK_INSTANCE_CAST ((o), DRW_TYPE_MONITOR, DrwMonitor))
-#define DRW_MONITOR_CLASS(k)     (G_TYPE_CHECK_CLASS_CAST((k), DRW_TYPE_MONITOR, DrwMonitorClass))
-#define DRW_IS_MONITOR(o)        (G_TYPE_CHECK_INSTANCE_TYPE ((o), DRW_TYPE_MONITOR))
-#define DRW_IS_MONITOR_CLASS(k)  (G_TYPE_CHECK_CLASS_TYPE ((k), DRW_TYPE_MONITOR))
-#define DRW_MONITOR_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), DRW_TYPE_MONITOR, DrwMonitorClass))
+#define DRW_TYPE_MONITOR (drw_monitor_get_type())
+#define DRW_MONITOR(o) \
+  (G_TYPE_CHECK_INSTANCE_CAST((o), DRW_TYPE_MONITOR, DrwMonitor))
+#define DRW_MONITOR_CLASS(k) \
+  (G_TYPE_CHECK_CLASS_CAST((k), DRW_TYPE_MONITOR, DrwMonitorClass))
+#define DRW_IS_MONITOR(o) (G_TYPE_CHECK_INSTANCE_TYPE((o), DRW_TYPE_MONITOR))
+#define DRW_IS_MONITOR_CLASS(k) (G_TYPE_CHECK_CLASS_TYPE((k), DRW_TYPE_MONITOR))
+#define DRW_MONITOR_GET_CLASS(o) \
+  (G_TYPE_INSTANCE_GET_CLASS((o), DRW_TYPE_MONITOR, DrwMonitorClass))
 
-typedef struct _DrwMonitor      DrwMonitor;
+typedef struct _DrwMonitor DrwMonitor;
 typedef struct _DrwMonitorClass DrwMonitorClass;
-typedef struct _DrwMonitorPriv  DrwMonitorPriv;
+typedef struct _DrwMonitorPriv DrwMonitorPriv;
 
 struct _DrwMonitor {
-        GObject        parent;
+  GObject parent;
 
-        DrwMonitorPriv *priv;
+  DrwMonitorPriv *priv;
 };
 
 struct _DrwMonitorClass {
-        GObjectClass parent_class;
+  GObjectClass parent_class;
 };
 
-GType        drw_monitor_get_type         (void) G_GNUC_CONST;
-DrwMonitor  *drw_monitor_new              (void);
+GType drw_monitor_get_type(void) G_GNUC_CONST;
+DrwMonitor *drw_monitor_new(void);
 
 #endif /* __DRW_MONITOR_H__ */

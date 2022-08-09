@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * The Totem project hereby grant permission for non-gpl compatible GStreamer
  * plugins to be used and distributed together with GStreamer and Totem. This
@@ -25,99 +25,85 @@
  *
  */
 
+#ifdef HAVE_CONFIG_H
 #include <config.h>
-
-#include <glib.h>
-#include <glib/gstdio.h>
-
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <sys/resource.h>
+#endif
 
 #include "totem-resources.h"
 
-#define MAX_HELPER_MEMORY (256 * 1024 * 1024)	/* 256 MB */
-#define MAX_HELPER_SECONDS (15)			/* 15 seconds */
+#include <glib.h>
+#include <glib/gstdio.h>
+#include <stdlib.h>
+#include <sys/resource.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <unistd.h>
+
+#define MAX_HELPER_MEMORY (256 * 1024 * 1024)    /* 256 MB */
+#define MAX_HELPER_SECONDS (15)                  /* 15 seconds */
 #define DEFAULT_SLEEP_TIME (30 * G_USEC_PER_SEC) /* 30 seconds */
 
 static guint sleep_time = DEFAULT_SLEEP_TIME;
 static gboolean finished = TRUE;
 
-static void
-set_resource_limits (const char *input)
-{
-	struct rlimit limit;
-	struct stat buf;
-	rlim_t max;
+static void set_resource_limits(const char *input) {
+  struct rlimit limit;
+  struct stat buf;
+  rlim_t max;
 
-	max = MAX_HELPER_MEMORY;
+  max = MAX_HELPER_MEMORY;
 
-	/* Set the maximum virtual size depending on the size
-	 * of the file to process, as we wouldn't be able to
-	 * mmap it otherwise */
-	if (input == NULL) {
-		max = MAX_HELPER_MEMORY;
-	} else if (g_stat (input, &buf) == 0) {
-		max = MAX_HELPER_MEMORY + buf.st_size;
-	} else if (g_str_has_prefix (input, "file://") != FALSE) {
-		char *file;
-		file = g_filename_from_uri (input, NULL, NULL);
-		if (file != NULL && g_stat (file, &buf) == 0)
-			max = MAX_HELPER_MEMORY + buf.st_size;
-		g_free (file);
-	}
+  /* Set the maximum virtual size depending on the size
+   * of the file to process, as we wouldn't be able to
+   * mmap it otherwise */
+  if (input == NULL) {
+    max = MAX_HELPER_MEMORY;
+  } else if (g_stat(input, &buf) == 0) {
+    max = MAX_HELPER_MEMORY + buf.st_size;
+  } else if (g_str_has_prefix(input, "file://") != FALSE) {
+    char *file;
+    file = g_filename_from_uri(input, NULL, NULL);
+    if (file != NULL && g_stat(file, &buf) == 0)
+      max = MAX_HELPER_MEMORY + buf.st_size;
+    g_free(file);
+  }
 
-	limit.rlim_cur = max;
-	limit.rlim_max = max;
+  limit.rlim_cur = max;
+  limit.rlim_max = max;
 
-	setrlimit (RLIMIT_DATA, &limit);
+  setrlimit(RLIMIT_DATA, &limit);
 
-	limit.rlim_cur = MAX_HELPER_SECONDS;
-	limit.rlim_max = MAX_HELPER_SECONDS;
-	setrlimit (RLIMIT_CPU, &limit);
+  limit.rlim_cur = MAX_HELPER_SECONDS;
+  limit.rlim_max = MAX_HELPER_SECONDS;
+  setrlimit(RLIMIT_CPU, &limit);
 }
 
-G_GNUC_NORETURN static gpointer
-time_monitor (gpointer data)
-{
-	const char *app_name;
+G_GNUC_NORETURN static gpointer time_monitor(gpointer data) {
+  const char *app_name;
 
-	g_usleep (sleep_time);
+  g_usleep(sleep_time);
 
-	if (finished != FALSE)
-		g_thread_exit (NULL);
+  if (finished != FALSE) g_thread_exit(NULL);
 
-	app_name = g_get_application_name ();
-	if (app_name == NULL)
-		app_name = g_get_prgname ();
-	g_print ("%s couldn't process file: '%s'\n"
-		 "Reason: Took too much time to process.\n",
-		 app_name,
-		 (const char *) data);
+  app_name = g_get_application_name();
+  if (app_name == NULL) app_name = g_get_prgname();
+  g_print(
+      "%s couldn't process file: '%s'\n"
+      "Reason: Took too much time to process.\n",
+      app_name, (const char *)data);
 
-	exit (0);
+  exit(0);
 }
 
-void
-totem_resources_monitor_start (const char *input, gint wall_clock_time)
-{
-	set_resource_limits (input);
+void totem_resources_monitor_start(const char *input, gint wall_clock_time) {
+  set_resource_limits(input);
 
-	if (wall_clock_time < 0)
-		return;
+  if (wall_clock_time < 0) return;
 
-	if (wall_clock_time > 0)
-		sleep_time = wall_clock_time;
+  if (wall_clock_time > 0) sleep_time = wall_clock_time;
 
-	finished = FALSE;
-	g_thread_new ("time-monitor", time_monitor, (gpointer) input);
+  finished = FALSE;
+  g_thread_new("time-monitor", time_monitor, (gpointer)input);
 }
 
-void
-totem_resources_monitor_stop (void)
-{
-	finished = TRUE;
-}
-
+void totem_resources_monitor_stop(void) { finished = TRUE; }

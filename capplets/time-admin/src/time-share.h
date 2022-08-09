@@ -21,49 +21,46 @@
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
-#include <gtk/gtk.h>
-#include <sys/stat.h>
 #include <fcntl.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <time.h>
-#include <sys/time.h>
 #include <gio/gio.h>
+#include <gtk/gtk.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/stat.h>
+#include <sys/time.h>
+#include <time.h>
 
 extern int TimeoutFlag;
-typedef struct
-{
-    GtkWidget        *MainWindow;
-    GtkWidget        *HourSpin;
-    GtkWidget        *MinuteSpin;
-    GtkWidget        *SecondSpin;
-    GtkWidget        *TimeZoneButton;
-    GtkWidget        *TimeZoneEntry;
-    GtkWidget        *NtpSyncSwitch;
-    GtkWidget        *Calendar;
-    GtkWidget        *SaveButton;
-    int               UpdateTimeId;
-    int               ApplyId;
-    gboolean          NtpState;
-    GDBusConnection  *Connection;
-    GDBusProxy       *proxy;
-    GtkWidget        *dialog;
-    GtkWidget        *TZconfire;
-    GtkWidget        *TZclose;
-    GtkWidget        *TimezoneEntry;
-    GtkWidget        *SearchBar;
-    GtkWidget        *map;
-    GtkListStore     *CityListStore;
-    GtkTreeModelSort *CityModelSort;
-    GtkWidget        *ButtonLock;
-    GPermission      *Permission;
+typedef struct {
+  GtkWidget *MainWindow;
+  GtkWidget *HourSpin;
+  GtkWidget *MinuteSpin;
+  GtkWidget *SecondSpin;
+  GtkWidget *TimeZoneButton;
+  GtkWidget *TimeZoneEntry;
+  GtkWidget *NtpSyncSwitch;
+  GtkWidget *Calendar;
+  GtkWidget *SaveButton;
+  int UpdateTimeId;
+  int ApplyId;
+  gboolean NtpState;
+  GDBusConnection *Connection;
+  GDBusProxy *proxy;
+  GtkWidget *dialog;
+  GtkWidget *TZconfire;
+  GtkWidget *TZclose;
+  GtkWidget *TimezoneEntry;
+  GtkWidget *SearchBar;
+  GtkWidget *map;
+  GtkListStore *CityListStore;
+  GtkTreeModelSort *CityModelSort;
+  GtkWidget *ButtonLock;
+  GPermission *Permission;
 
-}TimeAdmin;
+} TimeAdmin;
 
-int          ErrorMessage                (const char  *Title,
-                                          const char  *Msg);
+int ErrorMessage(const char *Title, const char *Msg);
 
-void         SetTooltip                  (GtkWidget   *box,
-                                          gboolean     mode);
+void SetTooltip(GtkWidget *box, gboolean mode);
 #endif

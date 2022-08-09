@@ -25,21 +25,22 @@
 #define __CAPPLET_UTIL_H
 
 #include <gio/gio.h>
-#include <gtk/gtk.h>
 #include <glib/gi18n.h>
+#include <gtk/gtk.h>
 
 /* Macros to make certain repetitive tasks a bit easier */
 
 /* Retrieve a widget from the UI object */
 
-#define WID(s) GTK_WIDGET (gtk_builder_get_object (dialog, s))
+#define WID(s) GTK_WIDGET(gtk_builder_get_object(dialog, s))
 
 /* Some miscellaneous functions useful to all capplets */
 
-void capplet_help (GtkWindow *parent, char const *section);
-void capplet_set_icon (GtkWidget *window, char const *icon_file_name);
-gboolean capplet_file_delete_recursive (GFile *directory, GError **error);
-gboolean capplet_notebook_scroll_event_cb (GtkWidget *widget, GdkEventScroll *event);
-void capplet_init (GOptionContext *context, int *argc, char ***argv);
+void capplet_help(GtkWindow *parent, char const *section);
+void capplet_set_icon(GtkWidget *window, char const *icon_file_name);
+gboolean capplet_file_delete_recursive(GFile *directory, GError **error);
+gboolean capplet_notebook_scroll_event_cb(GtkWidget *widget,
+                                          GdkEventScroll *event);
+void capplet_init(GOptionContext *context, int *argc, char ***argv);
 
 #endif /* __CAPPLET_UTIL_H */

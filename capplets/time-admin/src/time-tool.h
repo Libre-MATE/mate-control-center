@@ -19,31 +19,24 @@
 #define __TIME_TOOL_H__
 
 #include "time-share.h"
-struct tm    *GetCurrentTime    (void);
-void          Update_Clock_Start(TimeAdmin   *ta);
+struct tm *GetCurrentTime(void);
+void Update_Clock_Start(TimeAdmin *ta);
 
-void          ta_refresh_time   (TimeAdmin   *ta,
-                                 struct tm   *LocalTime);
+void ta_refresh_time(TimeAdmin *ta, struct tm *LocalTime);
 
-void          ta_refresh_date   (TimeAdmin   *ta,
-                                 struct tm   *LocalTime);
+void ta_refresh_date(TimeAdmin *ta, struct tm *LocalTime);
 
-void          Update_Clock_Stop (TimeAdmin   *ta);
+void Update_Clock_Stop(TimeAdmin *ta);
 
-gboolean      ChangeNtpSync     (GtkSwitch   *widget,
-                                 gboolean     state,
-                                 gpointer     data);
+gboolean ChangeNtpSync(GtkSwitch *widget, gboolean state, gpointer data);
 
-void          SelectDate        (GtkCalendar *calendar,
-                                 gpointer     data);
+void SelectDate(GtkCalendar *calendar, gpointer data);
 
-void          SaveModifyTime    (GtkButton   *button,
-                                 gpointer     data);
+void SaveModifyTime(GtkButton *button, gpointer data);
 
-gboolean      GetNtpState       (TimeAdmin   *ta);
+gboolean GetNtpState(TimeAdmin *ta);
 
-const gchar  *GetTimeZone       (TimeAdmin   *ta);
+const gchar *GetTimeZone(TimeAdmin *ta);
 
-void          SetTimeZone       (GDBusProxy  *proxy,
-                                 const char  *zone);
+void SetTimeZone(GDBusProxy *proxy, const char *zone);
 #endif

@@ -26,28 +26,31 @@
 
 G_BEGIN_DECLS
 
-#define THEMED_ICON_TYPE            (themed_icon_get_type ())
-#define THEMED_ICON(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), THEMED_ICON_TYPE, ThemedIcon))
-#define THEMED_ICON_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), THEMED_ICON_TYPE, ThemedIconClass))
-#define IS_THEMED_ICON(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), THEMED_ICON_TYPE))
-#define IS_THEMED_ICON_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), THEMED_ICON_TYPE))
-#define THEMED_ICON_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), THEMED_ICON_TYPE, ThemedIconClass))
+#define THEMED_ICON_TYPE (themed_icon_get_type())
+#define THEMED_ICON(obj) \
+  (G_TYPE_CHECK_INSTANCE_CAST((obj), THEMED_ICON_TYPE, ThemedIcon))
+#define THEMED_ICON_CLASS(klass) \
+  (G_TYPE_CHECK_CLASS_CAST((klass), THEMED_ICON_TYPE, ThemedIconClass))
+#define IS_THEMED_ICON(obj) \
+  (G_TYPE_CHECK_INSTANCE_TYPE((obj), THEMED_ICON_TYPE))
+#define IS_THEMED_ICON_CLASS(klass) \
+  (G_TYPE_CHECK_CLASS_TYPE((klass), THEMED_ICON_TYPE))
+#define THEMED_ICON_GET_CLASS(obj) \
+  (G_TYPE_INSTANCE_GET_CLASS((obj), THEMED_ICON_TYPE, ThemedIconClass))
 
-typedef struct
-{
-	GtkImage parent;
+typedef struct {
+  GtkImage parent;
 
-	GtkIconSize size;
-	gchar *id;
+  GtkIconSize size;
+  gchar *id;
 } ThemedIcon;
 
-typedef struct
-{
-	GtkImageClass parent_class;
+typedef struct {
+  GtkImageClass parent_class;
 } ThemedIconClass;
 
-GType themed_icon_get_type (void);
-GtkWidget *themed_icon_new (const gchar * id, GtkIconSize size);
+GType themed_icon_get_type(void);
+GtkWidget *themed_icon_new(const gchar *id, GtkIconSize size);
 
 G_END_DECLS
 

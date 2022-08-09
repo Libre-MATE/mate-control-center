@@ -21,7 +21,10 @@
 #ifndef __APPEARANCE_DESKTOP_H__
 #define __APPEARANCE_DESKTOP_H__
 
-void desktop_init (AppearanceData *data, const gchar **uris);
-void desktop_shutdown (AppearanceData *data);
+#include <glib.h>
+#include "appearance.h"
+
+void desktop_init(AppearanceData *data, const gchar **uris);
+void desktop_shutdown(AppearanceData *data);
 
 #endif /* __APPEARANCE_DESKTOP_H__ */

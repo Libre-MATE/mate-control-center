@@ -22,7 +22,7 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*/
+ */
 
 #ifndef __FONT_VIEW_MODEL_H__
 #define __FONT_VIEW_MODEL_H__
@@ -44,7 +44,7 @@ typedef struct _FontViewModelPrivate FontViewModelPrivate;
 
 #define FONT_VIEW_TYPE_MODEL font_view_model_get_type()
 #define FONT_VIEW_MODEL(obj) \
-  (G_TYPE_CHECK_INSTANCE_CAST ((obj), FONT_VIEW_TYPE_MODEL, FontViewModel))
+  (G_TYPE_CHECK_INSTANCE_CAST((obj), FONT_VIEW_TYPE_MODEL, FontViewModel))
 
 typedef struct {
   GtkListStore parent;
@@ -56,14 +56,12 @@ typedef struct {
   GtkListStoreClass parent_class;
 } FontViewModelClass;
 
-GType font_view_model_get_type (void);
-GtkTreeModel * font_view_model_new (void);
+GType font_view_model_get_type(void);
+GtkTreeModel *font_view_model_new(void);
 
-gboolean font_view_model_get_iter_for_face (FontViewModel *self,
-                                            FT_Face face,
-                                            GtkTreeIter *iter);
+gboolean font_view_model_get_iter_for_face(FontViewModel *self, FT_Face face,
+                                           GtkTreeIter *iter);
 
 G_END_DECLS
 
 #endif /* __FONT_VIEW_MODEL_H__ */
-

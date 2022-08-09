@@ -21,6 +21,8 @@
 #ifndef __APPEARANCE_THEMES_H__
 #define __APPEARANCE_THEMES_H__
 
+#include "appearance.h"
+
 void themes_init(AppearanceData* data);
 void themes_shutdown(AppearanceData* data);
 

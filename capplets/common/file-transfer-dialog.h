@@ -29,41 +29,42 @@
 
 G_BEGIN_DECLS
 
-#define FILE_TRANSFER_DIALOG(obj)          G_TYPE_CHECK_INSTANCE_CAST (obj, file_transfer_dialog_get_type (), FileTransferDialog)
-#define FILE_TRANSFER_DIALOG_CLASS(klass)  G_TYPE_CHECK_CLASS_CAST (klass, file_transfer_dialog_get_type (), FileTransferDialogClass)
-#define IS_FILE_TRANSFER_DIALOG(obj)       G_TYPE_CHECK_INSTANCE_TYPE (obj, file_transfer_dialog_get_type ())
+#define FILE_TRANSFER_DIALOG(obj)                                  \
+  G_TYPE_CHECK_INSTANCE_CAST(obj, file_transfer_dialog_get_type(), \
+                             FileTransferDialog)
+#define FILE_TRANSFER_DIALOG_CLASS(klass)                         \
+  G_TYPE_CHECK_CLASS_CAST(klass, file_transfer_dialog_get_type(), \
+                          FileTransferDialogClass)
+#define IS_FILE_TRANSFER_DIALOG(obj) \
+  G_TYPE_CHECK_INSTANCE_TYPE(obj, file_transfer_dialog_get_type())
 
 typedef struct _FileTransferDialog FileTransferDialog;
 typedef struct _FileTransferDialogClass FileTransferDialogClass;
 typedef struct _FileTransferDialogPrivate FileTransferDialogPrivate;
 
 typedef enum {
-	FILE_TRANSFER_DIALOG_DEFAULT = 1 << 0,
-	FILE_TRANSFER_DIALOG_OVERWRITE = 1 << 1
+  FILE_TRANSFER_DIALOG_DEFAULT = 1 << 0,
+  FILE_TRANSFER_DIALOG_OVERWRITE = 1 << 1
 } FileTransferDialogOptions;
 
-struct _FileTransferDialog
-{
-	GtkDialog dialog;
+struct _FileTransferDialog {
+  GtkDialog dialog;
 
-	FileTransferDialogPrivate *priv;
+  FileTransferDialogPrivate *priv;
 };
 
-struct _FileTransferDialogClass
-{
-	GtkDialogClass parent_class;
+struct _FileTransferDialogClass {
+  GtkDialogClass parent_class;
 };
 
-GType	       file_transfer_dialog_get_type (void);
-GtkWidget*     file_transfer_dialog_new (void);
-GtkWidget*     file_transfer_dialog_new_with_parent (GtkWindow *parent);
+GType file_transfer_dialog_get_type(void);
+GtkWidget *file_transfer_dialog_new(void);
+GtkWidget *file_transfer_dialog_new_with_parent(GtkWindow *parent);
 
-void	       file_transfer_dialog_copy_async (FileTransferDialog *dlg,
-						GList *source_files,
-						GList *target_files,
-						FileTransferDialogOptions options,
-						int priority);
-
+void file_transfer_dialog_copy_async(FileTransferDialog *dlg,
+                                     GList *source_files, GList *target_files,
+                                     FileTransferDialogOptions options,
+                                     int priority);
 
 G_END_DECLS
 

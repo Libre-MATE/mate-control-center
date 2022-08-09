@@ -26,10 +26,8 @@
 #include FT_FREETYPE_H
 #include <glib.h>
 
-gchar * font_utils_get_font_name (FT_Face face);
-gchar * font_utils_get_font_name_for_file (FT_Library library,
-                                           const gchar *path,
-                                           gint face_index);
+gchar *font_utils_get_font_name(FT_Face face);
+gchar *font_utils_get_font_name_for_file(FT_Library library, const gchar *path,
+                                         gint face_index);
 
 #endif /* __FONT_UTILS_H__ */
-

@@ -21,6 +21,8 @@
 #ifndef __DRW_TIMER_H__
 #define __DRW_TIMER_H__
 
+#include <glib.h>
+
 /*
  * This file defines a timer interface similar to GTimer, but defined in real
  * wall-clock time. A GTimer may stop counting while the computer is suspended
@@ -34,9 +36,9 @@
  */
 
 typedef struct _DrwTimer DrwTimer;
-DrwTimer * drw_timer_new (void);
-void drw_timer_start (DrwTimer *timer);
-gint drw_timer_elapsed (DrwTimer *timer);
-void drw_timer_destroy (DrwTimer *timer);
+DrwTimer *drw_timer_new(void);
+void drw_timer_start(DrwTimer *timer);
+gint drw_timer_elapsed(DrwTimer *timer);
+void drw_timer_destroy(DrwTimer *timer);
 
 #endif /* __DRW_TIMER_H__ */

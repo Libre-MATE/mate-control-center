@@ -28,6 +28,6 @@
 
 #include "mate-theme-info.h"
 
-void mate_meta_theme_set (MateThemeMetaInfo *meta_theme_info);
+void mate_meta_theme_set(MateThemeMetaInfo *meta_theme_info);
 
 #endif /* THEME_APPLY_H */

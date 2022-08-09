@@ -25,6 +25,6 @@
 
 typedef struct _DrWright DrWright;
 
-DrWright *drwright_new (void);
+DrWright *drwright_new(void);
 
 #endif /* __DR_WRIGHT_H__ */

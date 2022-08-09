@@ -27,12 +27,12 @@
 
 G_BEGIN_DECLS
 
-MateDesktopItem *load_desktop_item_from_unknown (const gchar * id);
+MateDesktopItem *load_desktop_item_from_unknown(const gchar *id);
 
-gboolean open_desktop_item_exec (MateDesktopItem * desktop_item);
-gboolean open_desktop_item_help (MateDesktopItem * desktop_item);
+gboolean open_desktop_item_exec(MateDesktopItem *desktop_item);
+gboolean open_desktop_item_help(MateDesktopItem *desktop_item);
 
-void copy_file (const gchar * src_uri, const gchar * dst_uri);
+void copy_file(const gchar *src_uri, const gchar *dst_uri);
 
 G_END_DECLS
 

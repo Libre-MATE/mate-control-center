@@ -22,6 +22,8 @@
 #ifndef __APPEARANCE_SUPPORT_H__
 #define __APPEARANCE_SUPPORT_H__
 
+#include "appearance.h"
+
 void support_init(AppearanceData* data);
 void support_shutdown(AppearanceData* data);
 

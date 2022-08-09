@@ -13,7 +13,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA.
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  *
  * The Totem project hereby grant permission for non-gpl compatible GStreamer
  * plugins to be used and distributed together with GStreamer and Totem. This
@@ -30,8 +30,7 @@
 
 #include <glib.h>
 
-void totem_resources_monitor_start	(const char *input,
-					 gint wall_clock_time);
-void totem_resources_monitor_stop	(void);
+void totem_resources_monitor_start(const char *input, gint wall_clock_time);
+void totem_resources_monitor_stop(void);
 
 #endif /* __TOTEM_RESOURCES_H__ */

@@ -30,48 +30,44 @@
 #include "time-zone.h"
 G_BEGIN_DECLS
 
-#define TYPE_TIMEZONE_MAP     (timezone_map_get_type ())
-#define TIMEZONEMAP(object)   (G_TYPE_CHECK_INSTANCE_CAST ((object), TYPE_TIMEZONE_MAP,TimezoneMap))
-typedef struct TimezoneMap
-{
-    GtkWidget parent_instance;
-    GdkPixbuf *orig_background;
-    GdkPixbuf *orig_background_dim;
-    GdkPixbuf *orig_color_map;
+#define TYPE_TIMEZONE_MAP (timezone_map_get_type())
+#define TIMEZONEMAP(object) \
+  (G_TYPE_CHECK_INSTANCE_CAST((object), TYPE_TIMEZONE_MAP, TimezoneMap))
+typedef struct TimezoneMap {
+  GtkWidget parent_instance;
+  GdkPixbuf *orig_background;
+  GdkPixbuf *orig_background_dim;
+  GdkPixbuf *orig_color_map;
 
-    GdkPixbuf *background;
-    GdkPixbuf *color_map;
-    GdkPixbuf *pin;
+  GdkPixbuf *background;
+  GdkPixbuf *color_map;
+  GdkPixbuf *pin;
 
-    guchar *visible_map_pixels;
-    gint visible_map_rowstride;
+  guchar *visible_map_pixels;
+  gint visible_map_rowstride;
 
-    gdouble selected_offset;
+  gdouble selected_offset;
 
-    TzDB *tzdb;
-    TzLocation *location;
+  TzDB *tzdb;
+  TzLocation *location;
 
-    gchar *bubble_text;
-}TimezoneMap;
+  gchar *bubble_text;
+} TimezoneMap;
 
-
-typedef struct TimezoneMapClass
-{
-    GtkWidgetClass parent_class;
+typedef struct TimezoneMapClass {
+  GtkWidgetClass parent_class;
 
 } TimezoneMapClass;
 
-GType         timezone_map_get_type        (void) G_GNUC_CONST;
+GType timezone_map_get_type(void) G_GNUC_CONST;
 
-void          timezone_map_set_bubble_text (TimezoneMap *map,
-                                            const gchar *text);
+void timezone_map_set_bubble_text(TimezoneMap *map, const gchar *text);
 
-gboolean      timezone_map_set_timezone    (TimezoneMap *map,
-                                            const gchar *timezone);
+gboolean timezone_map_set_timezone(TimezoneMap *map, const gchar *timezone);
 
-TzLocation   *timezone_map_get_location    (TimezoneMap *map);
+TzLocation *timezone_map_get_location(TimezoneMap *map);
 
-TimezoneMap * timezone_map_new             (void);
+TimezoneMap *timezone_map_new(void);
 
 G_END_DECLS
 #endif

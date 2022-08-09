@@ -20,16 +20,17 @@
  * */
 
 #ifndef __DM_UTIL_H__
-#define __DM_UTIL_H__  1
+#define __DM_UTIL_H__ 1
+
+#include <glib.h>
 
 G_BEGIN_DECLS
 
-typedef enum
-{
-    DM_TYPE_UNKNOWN,
-    DM_TYPE_LIGHTDM,
-    DM_TYPE_GDM,
-    DM_TYPE_MDM,
+typedef enum {
+  DM_TYPE_UNKNOWN,
+  DM_TYPE_LIGHTDM,
+  DM_TYPE_GDM,
+  DM_TYPE_MDM,
 } DMType;
 
 DMType dm_get_type(void);

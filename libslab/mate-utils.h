@@ -26,8 +26,8 @@
 
 G_BEGIN_DECLS
 
-gboolean load_image_by_id (GtkImage * image, GtkIconSize size,
-	const gchar * image_id);
+gboolean load_image_by_id(GtkImage* image, GtkIconSize size,
+                          const gchar* image_id);
 
 G_END_DECLS
 

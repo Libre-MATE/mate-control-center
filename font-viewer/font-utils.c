@@ -23,46 +23,40 @@
 
 #include "sushi-font-loader.h"
 
-gchar *
-font_utils_get_font_name (FT_Face face)
-{
+gchar *font_utils_get_font_name(FT_Face face) {
   gchar *name;
 
-  if (g_strcmp0 (face->style_name, "Regular") == 0)
-    name = g_strdup (face->family_name);
+  if (g_strcmp0(face->style_name, "Regular") == 0)
+    name = g_strdup(face->family_name);
   else
-    name = g_strconcat (face->family_name, ", ", face->style_name, NULL);
+    name = g_strconcat(face->family_name, ", ", face->style_name, NULL);
 
   return name;
 }
 
-gchar *
-font_utils_get_font_name_for_file (FT_Library library,
-                                   const gchar *path,
-                                   gint face_index)
-{
-    GFile *file;
-    gchar *uri, *contents = NULL, *name = NULL;
-    GError *error = NULL;
-    FT_Face face;
+gchar *font_utils_get_font_name_for_file(FT_Library library, const gchar *path,
+                                         gint face_index) {
+  GFile *file;
+  gchar *uri, *contents = NULL, *name = NULL;
+  GError *error = NULL;
+  FT_Face face;
 
-    file = g_file_new_for_path (path);
-    uri = g_file_get_uri (file);
+  file = g_file_new_for_path(path);
+  uri = g_file_get_uri(file);
 
-    face = sushi_new_ft_face_from_uri (library, uri, face_index, &contents,
-                                       &error);
-    if (face != NULL) {
-        name = font_utils_get_font_name (face);
-        FT_Done_Face (face);
-    } else if (error != NULL) {
-        g_warning ("Can't get font name: %s\n", error->message);
-        g_error_free (error);
-    }
+  face =
+      sushi_new_ft_face_from_uri(library, uri, face_index, &contents, &error);
+  if (face != NULL) {
+    name = font_utils_get_font_name(face);
+    FT_Done_Face(face);
+  } else if (error != NULL) {
+    g_warning("Can't get font name: %s\n", error->message);
+    g_error_free(error);
+  }
 
-    g_free (uri);
-    g_object_unref (file);
-    g_free (contents);
+  g_free(uri);
+  g_object_unref(file);
+  g_free(contents);
 
-    return name;
+  return name;
 }
-

@@ -18,7 +18,6 @@
  * Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-
 #ifndef __SLAB_H__
 #define __SLAB_H__
 
@@ -27,8 +26,8 @@
 #include "application-tile.h"
 #include "bookmark-agent.h"
 #include "double-click-detector.h"
-#include "mate-utils.h"
 #include "libslab-utils.h"
+#include "mate-utils.h"
 #include "nameplate-tile.h"
 #include "search-bar.h"
 #include "shell-window.h"
@@ -37,4 +36,3 @@
 #include "tile.h"
 
 #endif /* __SLAB_H__ */
-

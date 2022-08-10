@@ -364,8 +364,7 @@ static void assistant_cancelled(GtkAssistant *ass, EnrollData *data) {
   set_fingerprint_label(enable, disable);
 }
 
-static void on_signal(GDBusProxy *proxy G_GNUC_UNUSED,
-                      gchar *sender_name G_GNUC_UNUSED, gchar *signal_name,
+static void on_signal(GDBusProxy *proxy, gchar *sender_name, gchar *signal_name,
                       GVariant *parameters, EnrollData *data) {
   char *msg;
   gchar *result;

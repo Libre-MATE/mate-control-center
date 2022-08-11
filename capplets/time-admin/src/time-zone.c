@@ -551,9 +551,6 @@ TzInfo *tz_info_from_location(TzLocation *loc) {
   tz_env_value = g_strdup(getenv("TZ"));
   setenv("TZ", loc->zone, 1);
 
-#if 0
-    tzset ();
-#endif
   tzinfo = g_new0(TzInfo, 1);
 
   curtime = time(NULL);

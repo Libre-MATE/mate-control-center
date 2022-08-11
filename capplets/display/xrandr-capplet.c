@@ -685,10 +685,6 @@ static void rebuild_gui(App *app) {
 
   sensitive = app->current_output ? TRUE : FALSE;
 
-#if 0
-    g_debug ("rebuild gui, is on: %d", mate_rr_output_info_is_active (app->current_output));
-#endif
-
   rebuild_mirror_screens(app);
   rebuild_scale_window(app);
   rebuild_current_monitor_label(app);
@@ -697,9 +693,6 @@ static void rebuild_gui(App *app) {
   rebuild_rate_combo(app);
   rebuild_rotation_combo(app);
 
-#if 0
-    g_debug ("sensitive: %d, on: %d", sensitive, mate_rr_output_info_is_active (app->current_output));
-#endif
   gtk_widget_set_sensitive(app->panel_checkbox, sensitive);
 
   gtk_widget_set_sensitive(
@@ -1188,14 +1181,6 @@ static void list_snaps(MateRROutputInfo *output, GArray *edges, GArray *snaps) {
   }
 }
 
-#if 0
-static void
-print_edge (Edge *edge)
-{
-    g_debug ("(%d %d %d %d)", edge->x1, edge->y1, edge->x2, edge->y2);
-}
-#endif
-
 static gboolean corner_on_edge(int x, int y, Edge *e) {
   if (x == e->x1 && x == e->x2 && y >= e->y1 && y <= e->y2) return TRUE;
 
@@ -1456,10 +1441,6 @@ static void on_output_event(FooScrollArea *area, FooScrollAreaEvent *event,
 
         g_free(g_object_get_data(G_OBJECT(output), "grab-info"));
         g_object_set_data(G_OBJECT(output), "grab-info", NULL);
-
-#if 0
-		g_debug ("new position: %d %d %d %d", output->x, output->y, output->width, output->height);
-#endif
       }
 
       foo_scroll_area_invalidate(area);
@@ -1559,25 +1540,12 @@ static void paint_output(App *app, cairo_t *cr, guint i) {
 
   get_geometry(output, &w, &h);
 
-#if 0
-    g_debug ("%s (%p) geometry %d %d %d", output->name, output,
-	     w, h, output->rate);
-#endif
-
   viewport.height -= 2 * MARGIN;
   viewport.width -= 2 * MARGIN;
 
   mate_rr_output_info_get_geometry(output, &output_x, &output_y, NULL, NULL);
   x = output_x * scale + MARGIN + (viewport.width - total_w * scale) / 2.0;
   y = output_y * scale + MARGIN + (viewport.height - total_h * scale) / 2.0;
-
-#if 0
-    g_debug ("scaled: %f %f", x, y);
-
-    g_debug ("scale: %f", scale);
-
-    g_debug ("%f %f %f %f", x, y, w * scale + 0.5, h * scale + 0.5);
-#endif
 
   cairo_translate(cr, x + (w * scale + 0.5) / 2, y + (h * scale + 0.5) / 2);
 
@@ -1666,12 +1634,6 @@ static void on_area_paint(FooScrollArea *area, cairo_t *cr, gpointer data) {
 
   connected_outputs = list_connected_outputs(app, NULL, NULL);
 
-#if 0
-    double scale;
-    scale = compute_scale (app);
-    g_debug ("scale: %f", scale);
-#endif
-
   for (list = connected_outputs; list != NULL; list = list->next) {
     int pos;
 
@@ -1742,21 +1704,10 @@ static void check_required_virtual_size(App *app) {
   mate_rr_screen_get_ranges(app->screen, &min_width, &max_width, &min_height,
                             &max_height);
 
-#if 0
-    g_debug ("X Server supports:");
-    g_debug ("min_width = %d, max_width = %d", min_width, max_width);
-    g_debug ("min_height = %d, max_height = %d", min_height, max_height);
-
-    g_debug ("Requesting size of %dx%d", req_width, req_height);
-#endif
-
   if (!(min_width <= req_width && req_width <= max_width &&
         min_height <= req_height && req_height <= max_height)) {
     /* FIXME: present a useful dialog, maybe even before the user tries to Apply
      */
-#if 0
-	g_debug ("Your X server needs a larger Virtual size!");
-#endif
   }
 }
 
@@ -2264,9 +2215,6 @@ restart:
       /* Fall Through */
     case GTK_RESPONSE_DELETE_EVENT:
     case GTK_RESPONSE_CLOSE:
-#if 0
-	g_debug ("Close");
-#endif
       break;
 
     case GTK_RESPONSE_HELP:

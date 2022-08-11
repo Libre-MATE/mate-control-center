@@ -42,14 +42,15 @@ typedef enum {
   EGG_VIRTUAL_MOD4_MASK = 1 << 6,
   EGG_VIRTUAL_MOD5_MASK = 1 << 7,
 
-#if 0
+/*
   GDK_BUTTON1_MASK  = 1 << 8,
   GDK_BUTTON2_MASK  = 1 << 9,
   GDK_BUTTON3_MASK  = 1 << 10,
   GDK_BUTTON4_MASK  = 1 << 11,
   GDK_BUTTON5_MASK  = 1 << 12,
+*/
+
   /* 13, 14 are used by Xkb for the keyboard group */
-#endif
 
   EGG_VIRTUAL_MODE_SWITCH_MASK = 1 << 23,
   EGG_VIRTUAL_NUM_LOCK_MASK = 1 << 24,

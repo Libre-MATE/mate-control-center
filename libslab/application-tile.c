@@ -304,7 +304,7 @@ static void application_tile_setup(ApplicationTile *this) {
   g_object_get(G_OBJECT(priv->agent), BOOKMARK_AGENT_STORE_STATUS_PROP,
                &priv->agent_status, NULL);
 
-  priv->notify_signal_id = g_signal_connect(G_OBJECT(priv->agent), "notify",
+  priv->notify_signal_id = g_signal_connect(priv->agent, "notify",
                                             G_CALLBACK(agent_notify_cb), this);
 
   priv->startup_status = get_desktop_item_startup_status(priv->desktop_item);
@@ -389,7 +389,7 @@ static GtkWidget *create_header(const gchar *name) {
   gtk_label_set_line_wrap(GTK_LABEL(header), TRUE);
   gtk_label_set_xalign(GTK_LABEL(header), 0.0);
 
-  g_signal_connect(G_OBJECT(header), "size-allocate",
+  g_signal_connect(header, "size-allocate",
                    G_CALLBACK(header_size_allocate_cb), NULL);
 
   return header;

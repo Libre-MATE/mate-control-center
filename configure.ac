@@ -1,7 +1,7 @@
 AC_INIT([mate-control-center],
         [1.26.0],
         [https://github.com/Libre-MATE/mate-control-center])
-
+AC_COPYRIGHT([Copyright (C) 2022 Libre MATE])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([shell])
 AC_CONFIG_HEADERS([config.h])

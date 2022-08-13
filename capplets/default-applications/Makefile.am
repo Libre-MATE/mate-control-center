@@ -24,9 +24,9 @@ Desktop_in_files = mate-default-applications-properties.desktop.in
 desktop_DATA = $(Desktop_in_files:.desktop.in=.desktop)
 $(desktop_DATA): $(Desktop_in_files)
 if USE_NLS
-	$(AM_V_GEN) $(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
+	$(AM_V_GEN)$(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
 else
-	$(AM_V_GEN) sed '/^# Translators/d' < $< > $@
+	$(AM_V_GEN)$(SED) '/^# Translators/d' < $< > $@
 endif
 
 pkgconfigdir = $(libdir)/pkgconfig

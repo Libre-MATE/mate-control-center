@@ -19,9 +19,9 @@ desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
 
 $(desktop_DATA): $(desktop_in_files)
 if USE_NLS
-	$(AM_V_GEN) $(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
+	$(AM_V_GEN)$(MSGFMT) --desktop --keyword= --keyword=Name --keyword=Comment --keyword=Keywords --template $< -d $(top_srcdir)/po -o $@
 else
-	$(AM_V_GEN) sed '/^# Translators/d' < $< > $@
+	$(AM_V_GEN)$(SED) '/^# Translators/d' < $< > $@
 endif
 
 mate-network-properties-resources.h mate-network-properties-resources.c: org.mate.mcc.network.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/org.mate.mcc.network.gresource.xml)

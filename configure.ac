@@ -23,7 +23,8 @@ AC_COPYRIGHT([Copyright (C) 2022 Libre MATE])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([shell])
 AC_CONFIG_HEADERS([config.h])
-AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz tar-ustar silent-rules])
+AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz tar-ustar])
+AM_SILENT_RULES([yes])
 AM_MAINTAINER_MODE
 
 MATE_COMMON_INIT

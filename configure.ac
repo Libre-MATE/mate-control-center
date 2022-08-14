@@ -18,14 +18,13 @@
 AC_INIT([mate-control-center],
         [1.26.0],
         [https://github.com/Libre-MATE/mate-control-center])
+AC_PREREQ(2.60)
 AC_COPYRIGHT([Copyright (C) 2022 Libre MATE])
 AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_SRCDIR([shell])
 AC_CONFIG_HEADERS([config.h])
-
-AM_INIT_AUTOMAKE([1.9 no-dist-gzip dist-xz tar-ustar])
+AM_INIT_AUTOMAKE([1.11 no-dist-gzip dist-xz tar-ustar silent-rules])
 AM_MAINTAINER_MODE
-m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
 MATE_COMMON_INIT
 MATE_DEBUG_CHECK

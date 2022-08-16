@@ -95,17 +95,6 @@ typedef struct {
 /*
  * Error handling {{
  */
-#define PASSDLG_ERROR (mate_about_me_password_error_quark())
-
-static GQuark mate_about_me_password_error_quark(void) {
-  static GQuark q = 0;
-
-  if (q == 0) {
-    q = g_quark_from_static_string("mate_about_me_password_error");
-  }
-
-  return q;
-}
 
 /* error codes */
 enum {
